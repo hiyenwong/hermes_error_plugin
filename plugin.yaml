@@ -1,0 +1,19 @@
+name: error-handler
+version: 1.0.0
+description: "A Hermes Agent plugin that transforms LLM API errors into friendly messages, hiding raw technical details. Classifies errors into 8 categories—rate limits, billing, auth, context overflow, server, network, model errors, unknown—each with a clear message, emoji, and recovery tip. Dual-layer interception works with or without a host patch."
+author: "Hermes Community"
+homepage: "https://github.com/hermes-plugins/error-handler"
+provides_hooks:
+  - on_llm_error
+  - transform_llm_output
+config:
+  # Message language (zh-CN, en-US, etc.)
+  language: "zh-CN"
+  # Show technical details in collapsed section (for developers)
+  show_technical_details: false
+  # Custom messages per error category
+  # Format: {category}:{provider}:{model} -> message
+  custom_messages: {}
+  # Custom error patterns for classification
+  # Format: category -> [regex patterns]
+  error_patterns: {}
